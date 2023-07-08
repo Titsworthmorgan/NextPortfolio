@@ -1,9 +1,16 @@
 //getServerSideProps method - for changing data
 import { getProject } from "@/sanity/sanity-utils";
-
+import Nav from "@/app/Components/nav/nav";
+import '../../app/globals.scss'
+import styles from './project.module.scss'
 export default function Project({ project }) {
     
-    return <div>{project.name} asdasd</div>
+    return (
+        <div className={styles.main}>
+            <Nav />
+            {project.name} asdasd
+        </div>
+    )
 }
 
 export async function getServerSideProps({ params }) {
