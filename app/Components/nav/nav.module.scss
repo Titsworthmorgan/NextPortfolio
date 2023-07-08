@@ -1,11 +1,16 @@
 .navBody{
     width: 100%;
-    background-color: darkcyan;
+    margin-top: 10px;
+    a{
+        text-decoration: none;
+        width: fit-content;
+        font-size: 200%;
+    }
 }
 
 .homeButton{
     color: antiquewhite;
     font-weight: 1000;
     margin: 0;
-    margin-left: 20px;
+    margin-left: 50px;
 }

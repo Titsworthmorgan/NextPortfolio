@@ -20,6 +20,22 @@ export async function getProjects(){
         }`
     )
 }
+export async function getRecos(){
+    const client = createClient({
+        projectId: 'qsd8xwuz',
+        title: 'violet-locust',
+        dataset: 'production',
+    });
+
+    return client.fetch(
+        groq`*[_type == "reco"]{
+            _id,
+            _createdAt,
+            name,
+            content
+        }`
+    )
+}
 
 export async function getProject(slug){
     const client = createClient({

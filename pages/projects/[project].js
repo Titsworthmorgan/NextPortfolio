@@ -1,14 +1,16 @@
 //getServerSideProps method - for changing data
-import { getProject } from "@/sanity/sanity-utils";
+import { getProject, getRecos } from "@/sanity/sanity-utils";
 import Nav from "@/app/Components/nav/nav";
 import '../../app/globals.scss'
 import styles from './project.module.scss'
-export default function Project({ project }) {
-    
+import Footer from "@/app/Components/footer/footer";
+export default function Project({ project, reco }) {
+    console.log(reco)
     return (
         <div className={styles.main}>
             <Nav />
             {project.name} asdasd
+            <Footer recos={reco} />
         </div>
     )
 }
@@ -16,13 +18,14 @@ export default function Project({ project }) {
 export async function getServerSideProps({ params }) {
     try {
         const project = await getProject(params.project);
+        const reco = await getRecos(params.reco)
 
         // Check if project is not undefined or null
-        if (!project) {
+        if (!project || !reco) {
             throw new Error('No project found');
         }
 
-        return { props: { project } }
+        return { props: { project, reco } }
     } catch (error) {
         console.error('Error fetching project:', error);
 
