@@ -8,6 +8,7 @@ export default async function Home() {
   const reco = await getRecos()
   const projects = await getProjects()
   return (
+    <>
     <div className={styles.main}>
       {projects.map((thing) => (
         <Link key={thing._id} href={`/projects/${thing.slug}`}>
@@ -15,7 +16,9 @@ export default async function Home() {
           <Image src={thing.imageUrl} alt={thing.name} width={250} height={100}/>
         </Link>
       ))}
-      <Footer recos={reco} />
+      
     </div>
+    <Footer recos={reco} />
+    </>
   )
 }

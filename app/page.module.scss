@@ -4,5 +4,7 @@
   align-items: center;
   width: 100%;
   margin: 0;
-  background-color: black;
+  height: 100vh;
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(0,0,0,1) 41%, rgba(0,9,78,1) 60%, rgba(116,3,0,1) 92%);
 }
