@@ -17,6 +17,7 @@ import { innerHTML } from '../public/Assets/particles.js'
 import Link from 'next/link'
 
 import { getProjects, getRecos } from '@/sanity/sanity-utils'
+import SanityBlockContent from '@sanity/block-content-to-react'
 // import Link from 'next/link'
 // import Footer from './Components/footer/footer'
  
@@ -53,10 +54,10 @@ export default async function Home() {
           <div key={thing._id} className={index % 2 === 0 ? styles.projectBox : styles.projectBoxReverse}>
             <div className={styles.projectText}>
               <h2>{thing.name}</h2>
-                <p>lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum </p>
+              <SanityBlockContent blocks={thing.content} />
             </div>
             <div>
-              <Image src={thing.imageUrl} alt={thing.name} width={300} height={150}/>
+              <Image src={thing.imageUrl} alt={thing.name} width={350} height={200}/>
             </div>
           </div>
         ))}

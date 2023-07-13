@@ -25,11 +25,16 @@
         font-weight: 800;
         font-size: 4rem;
     }
-    h3{
-        font-size: xx-large;
+    .headers{
         justify-self: center;
         align-self: flex-end;
         margin: 0;
+        width: 100%;
+    }
+    h3{
+        z-index: 1;
+        font-size: xx-large;
+        position: absolute;
         color: #639353;
     }
 }
