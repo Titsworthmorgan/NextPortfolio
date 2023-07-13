@@ -32,6 +32,9 @@ export async function getRecos(){
             _id,
             _createdAt,
             name,
+            position,
+            company,
+            featured,
             content
         }`
     )

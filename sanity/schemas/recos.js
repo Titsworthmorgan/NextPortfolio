@@ -9,10 +9,24 @@ const reco = {
             type: 'string'
         },
         {
+            name: 'position', 
+            title: 'Position',
+            type: 'string'
+        },
+        {
+            name: 'company', 
+            title: 'Company',
+            type: 'string'
+        },
+        {
+            name: 'featured', 
+            title: 'Featured',
+            type: 'string'
+        },
+        {
             name: 'content',
             title: 'Content',
-            type: 'array',
-            of: [{ type: "block"}]
+            type: 'string',
         },
     ]
 }

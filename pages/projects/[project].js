@@ -1,6 +1,5 @@
 //getServerSideProps method - for changing data
 import { getProject, getRecos } from "@/sanity/sanity-utils";
-import Nav from "@/app/Components/nav/nav";
 import '../../app/globals.scss'
 import styles from './project.module.scss'
 import Footer from "@/app/Components/footer/footer";
@@ -8,7 +7,6 @@ export default function Project({ project, reco }) {
     console.log(reco)
     return (
         <div className={styles.main}>
-            <Nav />
             {project.name} asdasd
             <Footer recos={reco} />
         </div>
