@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Nav from './Components/nav/nav'
 import styles from './page.module.scss'
 import CenterCard from './Components/centerCard/centerCard'
 import i1 from '../public/Assets/HTML5logoandwordmark.svg.png'
@@ -14,6 +13,7 @@ import i9 from '../public/Assets/logo-vertical.png'
 import i10 from '../public/Assets/Sanity.png'
 import i11 from '../public/Assets/Strapi-Monogram.png'
 import { innerHTML } from '../public/Assets/particles.js'
+import Nav from './Components/nav/nav'
 import Link from 'next/link'
 
 import { getProjects, getRecos } from '@/sanity/sanity-utils'
@@ -27,8 +27,8 @@ export default async function Home() {
   const projects = await getProjects()
   return (
     <>
-      <di dangerouslySetInnerHTML={{__html : innerHTML}}></di>
       <Nav />
+      <di dangerouslySetInnerHTML={{__html : innerHTML}}></di>
       <div className={styles.section1}>
         <CenterCard />
         <div className={styles.columnCenter}>
