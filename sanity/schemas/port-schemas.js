@@ -15,6 +15,16 @@ const project = {
             options: {source: 'name'}
         },
         {
+            name: 'content',
+            title: 'Content',
+            type: 'string',
+        },
+        {
+            name: 'url',
+            title: 'URL',
+            type: 'string'
+        },
+        {
             name: 'image',
             title: 'Image',
             type: 'image',
@@ -24,17 +34,6 @@ const project = {
                 name: 'alt',
                 title: 'Alt',
                 type: 'string'
-                },
-                {
-                    name: 'url',
-                    title: 'URL',
-                    type: 'url'
-                },
-                {
-                    name: 'content',
-                    title: 'Content',
-                    type: 'array',
-                    of: [{ type: "block"}]
                 },
             ]
         }

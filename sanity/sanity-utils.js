@@ -12,11 +12,11 @@ export async function getProjects(){
             _id,
             _createdAt,
             name,
+            content,
+            url,
             "slug": slug.current,
             "imageUrl": image.asset -> url,
             "imageAlt": image.alt,
-            "content": image.content,
-            "imageURL": image.url,
         }`
     )
 }
@@ -51,10 +51,10 @@ export async function getProject(slug){
             _id,
             _createdAt,
             name,
+            "content",
             "slug": slug.current,
             "imageUrl": image.asset -> url,
             "imageAlt": image.alt,
-            "content": image.content,
             "imageURL": image.url,
         }`,
         { slug }
