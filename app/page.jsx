@@ -14,7 +14,6 @@ import Footer from '../Components/footer/footer'
 import Nav from '../Components/nav/nav'
 import ProjectCard from '../Components/projectCard/projectCard'
 
- 
 export default async function Home() {
   const reco = await getRecos()
   const projects = await getProjects()
