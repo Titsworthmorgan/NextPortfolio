@@ -5,16 +5,16 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../Components/ui/card";
+} from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../../Components/ui/accordion";
+} from "@/components/ui/accordion";
 import Link from "next/link"
 import Image from "next/image";
-import { Separator } from "../../../Components/ui/separator"
+import { Separator } from "@/components/ui/separator"
 
 export default async function ProjectCard(props) {
   let projects = props.projects;
