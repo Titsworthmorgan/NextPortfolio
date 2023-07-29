@@ -10,7 +10,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
-import Footer from './Components/footer/footer'
+import Footer from '../Components/footer/footer'
 import Nav from './Components/nav/nav'
 import ProjectCard from './Components/projectCard/projectCard'
 

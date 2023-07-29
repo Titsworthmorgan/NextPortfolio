@@ -2,7 +2,7 @@
 import { getProject, getRecos } from "@/sanity/sanity-utils";
 import '../../app/globals.scss'
 import styles from './project.module.scss'
-import Footer from "@/app/Components/footer/footer";
+import Footer from "@/Components/footer/footer";
 export default function Project({ project, reco }) {
     console.log(reco)
     return (
