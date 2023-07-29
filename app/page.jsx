@@ -3,13 +3,13 @@ import React from 'react'
 import {
   Card,
   CardContent,
-} from "@/components/ui/card"
+} from "@/Components/ui/card"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
+} from "@/Components/ui/avatar"
+import { Separator } from "@/Components/ui/separator"
 import Footer from '../Components/footer/footer'
 import Nav from '../Components/nav/nav'
 import ProjectCard from '../Components/projectCard/projectCard'
