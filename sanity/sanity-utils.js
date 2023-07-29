@@ -14,6 +14,7 @@ export async function getProjects(){
             name,
             content,
             url,
+            tech,
             "slug": slug.current,
             "imageUrl": image.asset -> url,
             "imageAlt": image.alt,

@@ -36,7 +36,25 @@ const project = {
                 type: 'string'
                 },
             ]
-        }
+        },
+        {
+            name: 'tech',
+            title: 'Tech',
+            type: 'array',
+            of: [
+              {
+                title: 'tech',
+                type: 'object',
+                fields: [
+                  {
+                    name: 'label',
+                    title: 'Label', 
+                    type: 'string'
+                  }
+                ]
+              }
+            ]
+        },
     ],
 
 }
