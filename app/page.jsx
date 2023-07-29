@@ -32,7 +32,7 @@ export default async function Home() {
               <AvatarFallback>*Image here*</AvatarFallback>
             </Avatar>
             <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white break-words text-center">
-              Hi, I'm Morgan Titsworth!
+            Hi, I&apos;m Morgan Titsworth!
             </h1>
             <Separator className="my-4 bg-neutral-700" />
             <h2 className="text-1xl sm:text-1xl md:text-2xl lg:text-3xl font-bold text-gray-200 break-words text-center">
@@ -73,7 +73,7 @@ export default async function Home() {
               <div className="flex flex-col items-center justify-center w-full flex-1 text-center">
                 <CardContent className=" py-0">
                   <p className="text-lg sm:text-xl md:text-2xl lg:text-2xl break-word font-bold text-white 2xl:text-xlg">
-                    "{reco.content}"
+                  &quot;{reco.content}&quot;
                   </p>
                   <h1 className="mt-10">
                     {reco.name}
