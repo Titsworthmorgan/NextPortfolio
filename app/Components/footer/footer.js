@@ -1,4 +1,4 @@
-import { Separator } from "../../Components/ui/separator"
+import { Separator } from "../../../Components/ui/separator"
 import Link from "next/link"
 export default function Footer(){
     return (
