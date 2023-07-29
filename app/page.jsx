@@ -16,46 +16,47 @@ import {
 } from "@/components/ui/accordion"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { innerHTML } from '../public/Assets/particles.js'
 //using tailwind for all styles
  
 export default async function Home() {
   const reco = await getRecos()
   const projects = await getProjects()
   return (
-    <div className="flex justify-center items-center flex-col">
-        <Accordion type="single" collapsible  className='z-20 absolute top-0 left-0 text-white mx-4 my-5'>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Get in touch!</AccordionTrigger>
-            <AccordionContent>
-              <Link href='https://www.linkedin.com/in/morgan-titsworth/' target='_blank'>LinkedIn</Link>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      <di dangerouslySetInnerHTML={{ __html: innerHTML }} className="z-0"></di>
+    <div className="flex justify-center items-center flex-col bg-black">
+        <div className='z-20 absolute top-0 left-0 max-w-full h-max mt-4 flex flex-row flex-wrap'>
+          <Link
+              className={
+                " ml-6 w-max bg-black text-neutral-300 hover:text-white   text-center rounded-[5px] p-1 2xl:text-base xl:text font-medium"
+              }
+              href='#projects'
+            >
+              Projects
+          </Link>
+          <Link
+              className={
+                " ml-6 w-max bg-black text-neutral-300 hover:text-white   text-center rounded-[5px] p-1 2xl:text-base xl:text font-medium"
+              }
+              href='#recommendations'
+            >
+              Recommendations
+          </Link>
+          <Separator className="my-4 bg-neutral-700 w-screen" />
+        </div>
       <div className="h-screen w-full flex justify-center items-center flex-wrap z-10 ">
-        <div className="flex justify-center items-center flex-wrap border border-gray-500 rounded-[10px] p-2 m-2 bg-black shadow-purple-400 shadow-md">
-          <Image
-            src={"/../public/Assets/Morgan-1003-LinkedIn.jpg"}
-            alt="Picture of morgan"
-            width={200}
-            height={200}
-            quality={100}
-            className="rounded-[5px]"
-          />
+        <div className="flex justify-center items-center flex-wrap p-2  xl:w-2/5 md:w-9/12 m-3 lg:w-3/5 sm:w-4/5">
           <div className="flex flex-col items-center justify-center mx-4 flex-wrap">
-            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-amber-300 break-words text-center">
-              Morgan Titsworth
+            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white break-words text-center">
+              Hi, I'm Morgan Titsworth!
             </h1>
             <Separator className="my-4 bg-neutral-700" />
-            <h2 className="text-1xl sm:text-1xl md:text-2xl lg:text-3xl font-bold text-gray-300 break-words text-center">
-              Fullstack developer
+            <h2 className="text-1xl sm:text-1xl md:text-2xl lg:text-3xl font-bold text-gray-200 break-words text-center">
+              I turn interactive designs into tangible, functional code. Dive in to see my work!
             </h2>
           </div>
         </div>
       </div>
       <Separator className="my-4 bg-neutral-400 w-11/12 self-center" />
-      <div className="bg-midnight flex justify-center items-center flex-col w-full gap-5 h-full">
+      <div className="bg-midnight flex justify-center items-center flex-col w-full gap-5 h-full" id='projects'>
         <h1 className="text-4xl lg:text-5xl font-bold text-amber-300 mt-5 break-words text-center">Featured Projects</h1>
         <div className=" flex justify-center items-center flex-row w-full flex-wrap">
           {projects.map((project) => (
@@ -115,8 +116,8 @@ export default async function Home() {
         </div>
       </div>
       <Separator className="my-4 bg-neutral-400 w-11/12 self-center mt-14" />
-      <div className="bg-midnight flex justify-center items-center flex-col w-full gap-5 h-full">
-        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-amber-300 mt-5">Recommendations</h1>
+      <div className="bg-midnight flex justify-center items-center flex-col w-full gap-5 h-full" id='recommendations'>
+        <h1 className="text-4xl lg:text-5xl font-bold text-amber-300 mt-5">Recommendations</h1>
         <div className=" flex justify-center items-center flex-col w-full gap-3">
           {reco.map((reco, index) => (
             <Card
