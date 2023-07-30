@@ -37,19 +37,19 @@ export default async function Home() {
                 <Image src={`/../public/Assets/next.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/Typescript.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
+                <Image src={`../public/Assets/Typescript.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/Sanity.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
+                <Image src={`../public/Assets/Sanity.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className="w-12 h-16 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/firebase.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={`../public/Assets/firebase.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/gcp.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={`../public/Assets/gcp.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/git.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={`../public/Assets/git.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
         </div>
       </div>
