@@ -74,12 +74,12 @@ export default async function Home() {
         className="bg-midnight flex justify-around items-center flex-col w-full my-6"
         id="recommendations"
       >
-        <div className='mb-5'>
+        <div className='mb-10 mt-16'>
           <h1 className="text-2xl sm:3xl lg:text-5xl font-bold text-amber-300">
             Recommendations
           </h1>
         </div>
-        <div className=" flex justify-center items-center flex-col w-full gap-20">
+        <div className=" flex justify-center items-center flex-col w-full gap-20 mb-20">
           {reco.map((reco, index) => (
             <div
               className={`xl:w-2/4 md:w-9/12 lg:w-3/5 sm:w-4/5 bg-black text-white flex flex-col items-center justify-center mx-4 border-gray-500 h-3/4 shadow-blue-400 shadow-md ${
