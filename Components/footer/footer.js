@@ -1,9 +1,7 @@
-import { Separator } from "../ui/separator"
 import Link from "next/link"
 export default function Footer(){
     return (
       <div className="w-full h-fit flex flex-col items-center justify-center mt-10 relative">
-        <Separator className="my-4 bg-neutral-400  w-5/6" />
         <h1 className="text-4xl lg:text-5xl font-bold text-amber-300 text-center">
           Connect with me!
         </h1>
@@ -54,7 +52,6 @@ export default function Footer(){
           </div>
         </div>
         <div className="my-5 flex flex-col items-center justify-center content-center">
-            <Separator className="bg-neutral-400 w-screen" />
             <p className="text-white mt-5">Copyright © 2023 Morgan Titsworth</p>
         </div>
       </div>
