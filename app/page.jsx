@@ -32,7 +32,7 @@ export default async function Home() {
               </h1>
               <div className='border-b border-gray-500 w-10/12 m-3'></div>
               <h2 className="text-1xl sm:text-1xl md:text-2xl lg:text-3xl font-bold text-gray-200 break-words text-center">
-                I turn interactive designs into tangible, functional code. Dive in
+                I turn interactive designs into functional code. Dive in
                 to see my work!
               </h2>
             </div>
