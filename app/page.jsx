@@ -4,6 +4,12 @@ import Footer from '../Components/footer/footer'
 import Nav from '../Components/nav/nav'
 import ProjectCard from '../Components/projectCard/projectCard'
 import profilePicture from '../public/Assets/Morgan-1003-LinkedIn.jpg'
+import next from '../public/Assets/next.png'
+import typescript from '../public/Assets/Typescript.png'
+import sanity from '../public/Assets/Sanity.png'
+import firebase from '../public/Assets/firebase.png'
+import gcp from '../public/Assets/gcp.png'
+import git from '../public/Assets/git.png'
 import Image from 'next/image'
 
 export default async function Home() {
@@ -34,22 +40,22 @@ export default async function Home() {
         </div>
         <div className="flex flex-row justify-center items-center flex-wrap p-2 w-4/5 gap-5 -mt-16">
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`/../public/Assets/next.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={next}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`../public/Assets/Typescript.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
+                <Image src={typescript}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`../public/Assets/Sanity.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
+                <Image src={sanity}  alt="Profile Image" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className="w-12 h-16 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`../public/Assets/firebase.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={firebase}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`../public/Assets/gcp.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={gcp}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
             <div className="w-14 h-14 relative overflow-hidden transition-all duration-250 transform hover:scale-110">
-                <Image src={`../public/Assets/git.png`}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
+                <Image src={git}  alt="Profile Image" layout="fill" objectFit="cover" quality={100}/>
             </div>
         </div>
       </div>
