@@ -11,6 +11,7 @@ import firebase from '../public/Assets/firebase.png'
 import gcp from '../public/Assets/gcp.png'
 import git from '../public/Assets/git.png'
 import Image from 'next/image'
+//
 
 export default async function Home() {
   const reco = await getRecos()
