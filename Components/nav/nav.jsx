@@ -1,19 +1,33 @@
-import Link from "next/link"
+'use client'
+import Link from "next/link";
+import styles from "./nav.module.scss";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
 export default function Nav() {
-
-
-    return (
-        <>
-            <Link
-                className={"ml-6 w-max bg-black text-neutral-300 hover:text-white   text-center p-1 2xl:text-base xl:text font-medium"}
-                href='#projects'>
-                Projects
-            </Link>
-            <Link className={"ml-6 w-max bg-black text-neutral-300 hover:text-white   text-center p-1 2xl:text-base xl:text font-medium"}
-                href='#recommendations'>
-                Recommendations
-            </Link>
-        </>
-    )
+  return (
+    <div className={styles.navParent}>
+        <div>
+      <NavigationMenu className='NavigationMenu'>
+        <NavigationMenuList className='NavigationMenuList'>
+          <NavigationMenuItem className='NavigationMenuItem'>
+            <NavigationMenuTrigger className='NavigationMenuTrigger'>Item One</NavigationMenuTrigger>
+            <NavigationMenuContent className={styles.menuContent}>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>Link</NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      </div>
+    </div>
+  );
 }
