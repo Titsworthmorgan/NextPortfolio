@@ -148,7 +148,7 @@ export const Header = () => {
                         ))}
                     </Flex>
                 }
-                <Flex hide="s">
+                <Flex hide="s" style={{marginLeft: '10px'}}>
                     { display.time && (
                         <TimeDisplay timeZone={person.location}/>
                     )}

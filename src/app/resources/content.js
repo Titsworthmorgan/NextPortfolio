@@ -81,6 +81,12 @@ const about = {
                         alt: 'Once UI Project',
                         width: 16,
                         height: 9
+                    },
+                    {
+                        src: '/images/projects/project-05/image.png',
+                        alt: 'Once UI Project',
+                        width: 16,
+                        height: 9
                     }
                 ]
             },
@@ -193,6 +199,12 @@ const about = {
                         width: 16,
                         height: 9
                     },
+                    {
+                        src: '/images/projects/project-05/image.png',
+                        alt: 'Project image',
+                        width: 16,
+                        height: 9
+                    }
                 ]
             },
             {
@@ -225,7 +237,7 @@ const blog = {
 const work = {
     label: 'Work',
     title: 'My projects',
-    description: `Design and dev projects by ${person.name}`
+    description: `Development projects by ${person.name}`
     // Create new project pages by adding a new .mdx file to app/blog/posts
     // All projects will be listed on the /home and /work routes
 }

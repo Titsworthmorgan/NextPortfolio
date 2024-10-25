@@ -1,18 +1,13 @@
 {
     "person": {
-        "role": "Design Engineer"
-    },
-    "newsletter": {
-        "title": "Subscribe to {firstName}'s Newsletter",
-        "description": "I occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering",
-        "button": "Sign up"
+        "role": "Frontend Team Lead"
     },
     "home": {
         "label": "Home",
         "title": "{name}'s Portfolio",
         "description": "Portfolio website showcasing my work as a {role}",
-        "headline": "Design engineer and builder",
-        "subline": "I'm Selene, a design engineer at FLY, where I craft intuitive user experiences. After hours, I build my own projects."
+        "headline": "Developer, Mentor, Veteran",
+        "subline": "I'm Morgan, Frontend Team Lead based in Eugene, Oregon."
     },
     "about": {
         "label": "About",
@@ -20,55 +15,53 @@
         "description": "Meet {name}, {role} from {location}",
         "intro": {
             "title": "Introduction",
-            "description": "Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology."
+            "description": "Full Stack Developer and Military Veteran with Secret Security Clearance, specializing in a wide range of web technologies, including HTML, CSS, JavaScript, React, SQL, and NoSQL. Brings 4 years of experience leading technical teams and managing software implementation, along with a strong foundation in competency-based learning to guide junior developers in practical project execution. Proven ability to streamline workflows and optimize development processes, crafting web and mobile applications for diverse clients. Passionate about embracing new technologies and maintaining industry-relevant educational content. Recognized for leadership, technical proficiency, and commitment to delivering high-quality software solutions."
         },
         "work": {
             "title": "Work Experience",
             "experiences": {
-                "FLY": {
-                    "timeframe": "2022 - Present",
-                    "role": "Senior Design Engineer",
-                    "achievements": "Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user engagement and 30% faster load times.;Spearheaded the integration of AI tools into design workflows, enabling designers to iterate 50% faster."
+                "ERA Solutions LLC": {
+                    "timeframe": "2023 - Present",
+                    "role": "Frontend Team Lead",
+                    "achievements": "Plan and oversee the execution of development projects, guiding staff and apprentices through the end-to-end lifecycle of building and delivering scalable web and mobile applications.;Mentors within a competency-based learning program that integrates apprentices’ development in webtechnologies with hands-on full-stack development projects, enhancing the application of theoreticalknowledge through practical experience.;"
                 },
-                "Creativ3": {
-                    "timeframe": "2018 - 2022",
-                    "role": "Lead Designer",
-                    "achievements": "Developed a design system that unified the brand across multiple platforms, improving design consistency by 40%.;Led a cross-functional team to launch a new product line, contributing to a 15% increase in overall company revenue."
+                "ToBeDecided": {
+                    "timeframe": "2021 - Present",
+                    "role": "Frontend Developer",
+                    "achievements": "Developed an lead the implementation of training models used to teach individuals upd to date web development standards and practices.;"
                 }
             }
         },
         "studies": {
             "title": "Studies",
             "institutions": {
-                "University of Jakarta": {
-                    "description": "Studied software engineering."
-                },
-                "Build the Future": {
-                    "description": "Studied online marketing and personal branding."
+                "Lane Community College": {
+                    "description": "Currently enrolled for computer science"
                 }
             }
         },
         "technical": {
             "title": "Technical skills",
             "skills": {
-                "Figma": {
-                    "description": "Able to prototype in Figma with Once UI with unnatural speed."
-                },
                 "Nextjs": {
                     "description": "Building next gen apps with Next.js + Once UI + Supabase."
+                },
+                "React": {
+                    "description": "Building web apps with React"
+                },
+                "SQL": {
+                    "description": "Managing databases with SQL"
+                },
+                "NoSQL": {
+                    "description": "Handling non-relational databases with NoSQL"
                 }
             }
         }
     },
-    "blog": {
-        "label": "Blog",
-        "title": "Writing about design and tech...",
-        "description": "Read what {name} has been up to recently"
-    },
     "work": {
         "label": "Work",
         "title": "My projects",
-        "description": "Design and dev projects by {name}"
+        "description": "Development projects by {name}"
     },
     "gallery": {
         "label": "Gallery",
