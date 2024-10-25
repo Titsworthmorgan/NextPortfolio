@@ -196,26 +196,6 @@ const about = {
                 ]
             },
             {
-                title: 'JavaScript',
-                description: <>Developing dynamic web applications with JavaScript</>,
-                images: []
-            },
-            {
-                title: 'HTML',
-                description: <>Structuring web content with HTML</>,
-                images: []
-            },
-            {
-                title: 'CSS',
-                description: <>Styling web pages with CSS</>,
-                images: []
-            },
-            {
-                title: 'Node.js',
-                description: <>Building server-side applications with Node.js</>,
-                images: []
-            },
-            {
                 title: 'SQL',
                 description: <>Managing databases with SQL</>,
                 images: []
@@ -228,16 +208,6 @@ const about = {
             {
                 title: 'TypeScript',
                 description: <>Developing scalable applications with TypeScript</>,
-                images: []
-            },
-            {
-                title: 'Express',
-                description: <>Creating RESTful APIs with Express</>,
-                images: []
-            },
-            {
-                title: 'REST',
-                description: <>Designing RESTful web services</>,
                 images: []
             },
         ]
