@@ -252,7 +252,7 @@ export default function About(
                                         <Flex
                                             as="ul"
                                             direction="column" gap="16">
-                                            {experience.achievements.map((achievement: string, index: any) => (
+                                            {experience.achievements.map((achievement: React.ReactElement, index: number) => (
                                                 <Text
                                                     as="li"
                                                     variant="body-default-m"
