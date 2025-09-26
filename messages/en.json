@@ -1,74 +1,74 @@
 {
-    "person": {
-        "role": "Frontend Team Lead"
-    },
-    "home": {
-        "label": "Home",
-        "title": "{name}'s Portfolio",
-        "description": "Portfolio website showcasing my work as a {role}",
-        "headline": "Developer, Mentor, Veteran",
-        "subline": "I'm Morgan, Frontend Team Lead based in Eugene, Oregon."
-    },
-    "about": {
-        "label": "About",
-        "title": "About me",
-        "description": "Meet {name}, {role} from {location}",
-        "intro": {
-            "title": "Introduction",
-            "description": "Full Stack Developer and Military Veteran with Secret Security Clearance, specializing in a wide range of web technologies, including HTML, CSS, JavaScript, React, SQL, and NoSQL. Brings 4 years of experience leading technical teams and managing software implementation, along with a strong foundation in competency-based learning to guide junior developers in practical project execution. Proven ability to streamline workflows and optimize development processes, crafting web and mobile applications for diverse clients. Passionate about embracing new technologies and maintaining industry-relevant educational content. Recognized for leadership, technical proficiency, and commitment to delivering high-quality software solutions."
-        },
-        "work": {
-            "title": "Work Experience",
-            "experiences": {
-                "ERA Solutions LLC": {
-                    "timeframe": "2023 - Present",
-                    "role": "Frontend Team Lead",
-                    "achievements": "Plan and oversee the execution of development projects, guiding staff and apprentices through the end-to-end lifecycle of building and delivering scalable web and mobile applications.;Mentors within a competency-based learning program that integrates apprentices’ development in webtechnologies with hands-on full-stack development projects, enhancing the application of theoreticalknowledge through practical experience.;"
-                },
-                "ToBeDecided": {
-                    "timeframe": "2021 - Present",
-                    "role": "Frontend Developer",
-                    "achievements": "Developed an lead the implementation of training models used to teach individuals upd to date web development standards and practices.;"
-                }
-            }
-        },
-        "studies": {
-            "title": "Studies",
-            "institutions": {
-                "Lane Community College": {
-                    "description": "Currently enrolled for computer science"
-                }
-            }
-        },
-        "technical": {
-            "title": "Technical skills",
-            "skills": {
-                "Nextjs": {
-                    "description": "Building next gen apps with Next.js + Once UI + Supabase."
-                },
-                "React": {
-                    "description": "Building web apps with React"
-                },
-                "SQL": {
-                    "description": "Managing databases with SQL"
-                },
-                "NoSQL": {
-                    "description": "Handling non-relational databases with NoSQL"
-                }
-            }
-        }
+  "person": {
+    "role": "Software Developer"
+  },
+  "home": {
+    "label": "Home",
+    "title": "{name}'s Portfolio",
+    "description": "Portfolio website showcasing my work as a {role}",
+    "headline": "Developer, Mentor, Veteran",
+    "subline": "I'm Morgan, a software Developer based in Eugene, Oregon."
+  },
+  "about": {
+    "label": "About",
+    "title": "About me",
+    "description": "Meet {name}, {role} from {location}",
+    "intro": {
+      "title": "Introduction",
+      "description": "Full Stack Developer and Military Veteran with Secret Security Clearance, specializing in a wide range of web technologies, including HTML, CSS, JavaScript, React, SQL, and NoSQL. Brings 4 years of experience leading technical teams and managing software implementation, along with a strong foundation in competency-based learning to guide junior developers in practical project execution. Proven ability to streamline workflows and optimize development processes, crafting web and mobile applications for diverse clients. Passionate about embracing new technologies and maintaining industry-relevant educational content. Recognized for leadership, technical proficiency, and commitment to delivering high-quality software solutions."
     },
     "work": {
-        "label": "Work",
-        "title": "My projects",
-        "description": "Development projects by {name}"
+      "title": "Work Experience",
+      "experiences": {
+        "ToBeDetermined Inc": {
+          "timeframe": "2021 - Present",
+          "role": "Co-Founder & Lead Developer",
+          "achievements": "Developed an lead the implementation of training models used to teach individuals up to date web development standards and practices.;"
+        },
+        "ERA Solutions LLC": {
+          "timeframe": "2023 - 2025",
+          "role": "Frontend Team Lead",
+          "achievements": "Plan and oversee the execution of development projects, guiding staff and apprentices through the end-to-end lifecycle of building and delivering scalable web and mobile applications.;Mentors within a competency-based learning program that integrates apprentices’ development in webtechnologies with hands-on full-stack development projects, enhancing the application of theoreticalknowledge through practical experience.;"
+        }
+      }
     },
-    "gallery": {
-        "label": "Gallery",
-        "title": "My photo gallery",
-        "description": "A photo collection by {name}"
+    "studies": {
+      "title": "Studies",
+      "institutions": {
+        "Lane Community College": {
+          "description": "Currently enrolled for computer science"
+        }
+      }
     },
-    "projectCard": {
-        "label": "Read Case Study"
+    "technical": {
+      "title": "Technical skills",
+      "skills": {
+        "Nextjs": {
+          "description": "Building next gen apps with Next.js + Once UI + Supabase."
+        },
+        "React": {
+          "description": "Building web apps with React"
+        },
+        "SQL": {
+          "description": "Managing databases with SQL"
+        },
+        "NoSQL": {
+          "description": "Handling non-relational databases with NoSQL"
+        }
+      }
     }
+  },
+  "work": {
+    "label": "Work",
+    "title": "My projects",
+    "description": "Development projects by {name}"
+  },
+  "gallery": {
+    "label": "Gallery",
+    "title": "My photo gallery",
+    "description": "A photo collection by {name}"
+  },
+  "projectCard": {
+    "label": "Read Case Study"
+  }
 }
