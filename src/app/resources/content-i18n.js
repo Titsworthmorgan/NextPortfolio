@@ -13,17 +13,6 @@ const createI18nContent = (t) => {
     languages: ["English"], // optional: Leave the array empty if you don't want to display languages
   };
 
-  const newsletter = {
-    display: true,
-    title: <>Subscribe to {person.firstName}'s Newsletter</>,
-    description: (
-      <>
-        I occasionally write about design, technology, and share thoughts on the
-        intersection of creativity and engineering.
-      </>
-    ),
-  };
-
   const social = [
     // Links are automatically displayed.
     // Import new icons in /once-ui/icons.ts
@@ -449,7 +438,6 @@ const createI18nContent = (t) => {
   return {
     person,
     social,
-    newsletter,
     home,
     about,
     blog,

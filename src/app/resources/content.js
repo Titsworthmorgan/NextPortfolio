@@ -12,17 +12,6 @@ const person = {
   languages: ["English"], // optional: Leave the array empty if you don't want to display languages
 };
 
-const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      I occasionally write about design, technology, and share thoughts on the
-      intersection of creativity and engineering.
-    </>
-  ),
-};
-
 const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
@@ -92,30 +81,29 @@ const about = {
         achievements: [
           <>
             Developed an lead the implementation of training models used to
-            teach individuals up-to-date web development standards and
-            practices
+            teach individuals up-to-date web development standards and practices
           </>,
           <>
-            Collaborated in the creation of an AI-driven automation solution for blue
-            collar businesses, reducing net operational costs by at least $20,000
-            per year and increasing profit margins by 20%.
+            Collaborated in the creation of an AI-driven automation solution for
+            blue collar businesses, reducing net operational costs by at least
+            $20,000 per year and increasing profit margins by 20%.
           </>,
           <>
-            Delivered end-to-end product development and technical support for 
-            legacy and modern web applications, working across diverse technology 
-            stacks from Vue 2 to Next.js to ensure seamless functionality and 
-            optimal performance.
+            Delivered end-to-end product development and technical support for
+            legacy and modern web applications, working across diverse
+            technology stacks from Vue 2 to Next.js to ensure seamless
+            functionality and optimal performance.
           </>,
           <>
-            Provided comprehensive technical support and maintenance for existing 
-            products that may have compatibility issues, implementing solutions 
-            across various web technologies including React, Angular, Vue.js, 
-            and server-side frameworks.
+            Provided comprehensive technical support and maintenance for
+            existing products that may have compatibility issues, implementing
+            solutions across various web technologies including React, Angular,
+            Vue.js, and server-side frameworks.
           </>,
           <>
-            Led full-stack development initiatives spanning the entire product 
-            lifecycle, from initial requirements gathering through deployment 
-            and ongoing support, utilizing modern frameworks like Next.js, 
+            Led full-stack development initiatives spanning the entire product
+            lifecycle, from initial requirements gathering through deployment
+            and ongoing support, utilizing modern frameworks like Next.js,
             Nuxt.js, and traditional technologies.
           </>,
           <>
@@ -384,4 +372,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, home, about, blog, work, gallery };

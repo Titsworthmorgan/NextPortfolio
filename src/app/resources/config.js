@@ -1,7 +1,7 @@
 const baseURL = 'demo.app'
 
 // Enable localization
-const i18n = false;
+const i18n = true;
 
 // Manage localized content in the messages folder
 const i18nOptions = {
