@@ -157,7 +157,7 @@ export default function Project({ params }: WorkParams) {
 					<Text
 						variant="body-default-s"
 						onBackground="neutral-weak">
-						{new Date(post.metadata.publishedAt).getFullYear()}
+						{post.metadata.publishedAt.match(/^\d{4}$/) ? post.metadata.publishedAt : new Date(post.metadata.publishedAt).getFullYear()}
 					</Text>
 				</Flex>
 				<CustomMDX source={post.content} />
