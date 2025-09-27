@@ -128,6 +128,12 @@ const createI18nContent = (t) => {
               height: 9,
             },
             {
+              src: "/images/projects/project-07/contests.png",
+              alt: "Project image",
+              width: 16,
+              height: 9,
+            },
+            {
               src: "/images/projects/project-02/image.png",
               alt: "Project image",
               width: 16,
@@ -286,7 +292,7 @@ const createI18nContent = (t) => {
               height: 9,
             },
             {
-              src: "/images/projects/project-02/image.png",
+              src: "/images/projects/project-07/contests.png",
               alt: "Project image",
               width: 16,
               height: 9,
@@ -304,13 +310,25 @@ const createI18nContent = (t) => {
           description: <>Building web apps with React</>,
           images: [
             {
+              src: "/images/projects/project-05/image.png",
+              alt: "Project image",
+              width: 16,
+              height: 9,
+            },
+          ],
+        },
+        {
+          title: "Legacy Frameworks",
+          description: <>Meteor.JS, Vue 2.0</>,
+          images: [
+            {
               src: "/images/projects/project-04/image.png",
               alt: "Project image",
               width: 16,
               height: 9,
             },
             {
-              src: "/images/projects/project-05/image.png",
+              src: "/images/projects/project-02/image.png",
               alt: "Project image",
               width: 16,
               height: 9,
