@@ -3,16 +3,12 @@ import React from 'react';
 import { Heading, Flex, Text, Button,  Avatar, RevealFx } from '@/once-ui/components';
 import { Projects } from '@/components/work/Projects';
 
-import { baseURL, routes, renderContent } from '@/app/resources'; 
+import { baseURL, routes, renderContent } from '@/app/resources';
 import { Posts } from '@/components/blog/Posts';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { Metadata } from 'next';
 
-export async function generateMetadata(
-	{params: {locale}}: { params: { locale: string }}
-) {
-	const t = await getTranslations();
-    const { home } = renderContent(t);
+export async function generateMetadata(): Promise<Metadata> {
+    const { home } = renderContent();
 	const title = home.title;
 	const description = home.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -24,7 +20,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}`,
+			url: `https://${baseURL}`,
 			images: [
 				{
 					url: ogImage,
@@ -41,12 +37,8 @@ export async function generateMetadata(
 	};
 }
 
-export default function Home(
-	{ params: {locale}}: { params: { locale: string }}
-) {
-	unstable_setRequestLocale(locale);
-	const t = useTranslations();
-	const { home, about, person } = renderContent(t);
+export default function Home() {
+	const { home, about, person } = renderContent();
 	return (
 		<Flex
 			maxWidth="m" fillWidth gap="xl"
@@ -98,7 +90,7 @@ export default function Home(
 						<RevealFx translateY="12" delay={0.4}>
 							<Button
 								data-border="rounded"
-								href={`/${locale}/about`}
+								href="/about"
 								variant="tertiary"
 								suffixIcon="chevronRight"
 								size="m">
@@ -111,17 +103,17 @@ export default function Home(
 											src={person.avatar}
 											size="m"/>
 										)}
-										{t("about.title")}
+										{about.label}
 								</Flex>
 							</Button>
 						</RevealFx>
 					</Flex>
-				
+
 			</Flex>
 			<RevealFx translateY="16" delay={0.6}>
-				<Projects range={[1,1]} locale={locale}/>
+				<Projects range={[1,1]}/>
 			</RevealFx>
-			<Projects range={[2]} locale={locale}/>
+			<Projects range={[2]}/>
 		</Flex>
 	);
 }

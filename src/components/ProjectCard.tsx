@@ -10,7 +10,6 @@ import {
   Text,
 } from "@/once-ui/components";
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 import { track } from "@vercel/analytics";
 interface ProjectCardProps {
   href: string;
@@ -31,8 +30,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const t = useTranslations();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -146,7 +143,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 href={href}
                 onClick={() => track("project-card", { name: `${href}` })}
               >
-                <Text variant="body-default-s">{t("projectCard.label")}</Text>
+                <Text variant="body-default-s">View Project</Text>
               </SmartLink>
             )}
           </Flex>

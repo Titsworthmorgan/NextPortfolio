@@ -2,14 +2,10 @@ import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text 
 import { baseURL, renderContent } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { Metadata } from 'next';
 
-export async function generateMetadata(
-    {params: {locale}}: { params: { locale: string }}
-) {
-    const t = await getTranslations();
-    const {person, about, social } = renderContent(t);
+export async function generateMetadata(): Promise<Metadata> {
+    const {person, about, social } = renderContent();
 	const title = about.title;
 	const description = about.description;
 	const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
@@ -21,7 +17,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/blog`,
+			url: `https://${baseURL}/about`,
 			images: [
 				{
 					url: ogImage,
@@ -38,12 +34,8 @@ export async function generateMetadata(
 	};
 }
 
-export default function About(
-    { params: {locale}}: { params: { locale: string }}
-) {
-    unstable_setRequestLocale(locale);
-    const t = useTranslations();
-    const {person, about, social } = renderContent(t);
+export default function About() {
+    const {person, about, social } = renderContent();
     const structure = [
         { 
             title: about.intro.title,
