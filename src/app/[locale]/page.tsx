@@ -5,12 +5,11 @@ import { Projects } from '@/components/work/Projects';
 
 import { baseURL, routes, renderContent } from '@/app/resources'; 
 import { Posts } from '@/components/blog/Posts';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
-
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 export async function generateMetadata(
-	{params: {locale}}: { params: { locale: string }}
+	{params}: { params: Promise<{ locale: string }>}
 ) {
+	const { locale } = await params;
 	const t = await getTranslations();
     const { home } = renderContent(t);
 	const title = home.title;
@@ -41,11 +40,12 @@ export async function generateMetadata(
 	};
 }
 
-export default function Home(
-	{ params: {locale}}: { params: { locale: string }}
+export default async function Home(
+	{ params }: { params: Promise<{ locale: string }>}
 ) {
-	unstable_setRequestLocale(locale);
-	const t = useTranslations();
+	const { locale } = await params;
+	setRequestLocale(locale);
+	const t = await getTranslations();
 	const { home, about, person } = renderContent(t);
 	return (
 		<Flex

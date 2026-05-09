@@ -1,0 +1,46 @@
+---
+title: "C++ JSON Parser"
+publishedAt: "2026"
+summary: "This was actually a final project for a C++ class I took this year. The initial goal was to make a WC tool but decided to take it a bit further and make a JSON parser."
+team:
+  - name: "Morgan Titsworth"
+    role: "Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/morgan-titsworth/"
+---
+
+## Overview
+
+This is a simple command line tool written in C++ that processes command line arguments and performs basic operations based on the provided flags.
+I saw this project on https://codingchallenges.fyi/challenges/challenge-wc, and figured it would be more practical than a ascii art frogger game.
+This has a JSON formatter included as well, which is a bit more complex than the other features. However I wanted to just see how far I could get with that before hitting any
+critical roadblocks. The only one I really hit was time constraints considering other classes and such. I stopped short of getting the formatter perfect, but it does a decent job of
+keeping it atleast consistent in what seems like A common sense way. (complete.json has been formatted with prettier for comparison)
+
+- I wanted to put the JSON formatter into two classes.
+  - One for lexical analysis (tokenizing)
+    - All this does is take in the raw JSON text and break it down into an array of strings representing the tokens.
+      - [`{`, `"someKey"`, `: `, `"someValue"`, `}`]
+  - One for parsing and formatting
+    - This takes in the array of tokens from the tokenizer and validates the structure according to JSON standards as much as it can.
+    - It then outputs a formatted version of the JSON to a new file.
+- I used: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c2-use-class-if-the-class-has-an-invariant-use-struct-if-the-data-members-can-vary-independently
+  as a guide for when to use struct vs class in C++. I also did a bunch of other digging and deduced that classes should be declared in header files and their methods defined in cpp files.
+- Testing I just grabbed the two most official looking JSON standards I could find online and made test cases based on those.
+  - https://www.rfc-editor.org/rfc/pdfrfc/rfc8259.txt.pdf - The JavaScript Object Notation (JSON) Data Interchange Format
+  - https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf - The JSON Data Interchange Standard
+- I started with using a some old entity relation diagrams I used previously for work, and generate dummy data JSON based on those to use as test cases.
+- Some features are a little odd, like the parser has -most- of the error handling in place however some is handled in token generation.
+  - This is because certain errors are easier to catch during tokenization rather than parsing, such as invalid number formats (leading zeros, multiple decimal points) and unclosed strings.
+  - Some of the error messages are not EXACTLY indicative of the actual problem, but they absolutely do point you in the right direction. IE; `Expected , or '}'` instead of unclosed string.
+- The JSON formatter is still not quite perfect, but it generally does a good job of formatting valid JSON files into a more human-readable format. Its not quite up to what something like prettier or jq would do, but its close enough for this.
+- clang-format is purely for my own convenienc to keep code style consistent. This can be ignored if desired and the default formatting will take precedence.
+
+## Features
+
+- Character counter (to be added)
+- Byte counter
+- Line counter
+- Word counter
+- JSON formatter (basic functionality)
+- JSON testing
