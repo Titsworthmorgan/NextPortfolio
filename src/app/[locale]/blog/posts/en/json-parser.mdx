@@ -12,7 +12,7 @@ team:
 
 ## Overview
 
-This started as a [wc](https://codingchallenges.fyi/challenges/challenge-wc) clone but the more interesting half of the project is the JSON parser/formatter. The parser is hand-rolled in two passes:
+This was a school project I had made for my programming class at Community College. It started as a [wc](https://codingchallenges.fyi/challenges/challenge-wc) tool however I had the extra time to go a step further and just pick the next item in the list. The more interesting half of the project is the JSON parser/formatter or whatever we want to call it from it's current form. The parser is hand-rolled in two passes:
 
 1. **Lexical analysis** — read the raw text and emit a token stream like `` [`{`, `"someKey"`, `:`, `"someValue"`, `}`] ``.
 2. **Parsing + formatting** — validate that token stream against RFC 8259 and ECMA-404, then emit a re-formatted version to a sibling `*-formatted.json` file.
@@ -23,10 +23,11 @@ A few honest caveats:
 
 - Some error messages aren't perfectly precise — e.g. `Expected , or '}'` shows up when the real problem is an unclosed string. Points you in the right direction even if it's not pinpoint.
 - Certain checks live in the tokenizer instead of the parser (leading zeros, multi-decimal numbers, unterminated strings) because they're easier to catch during tokenization.
+- Zero AI was used in the implementation of this project. I did this the "old fashion way" — Stack Overflow, documentation, and using cout to debug whatever it was that broke because I hadn't figured out GDB yet. After project submission I did use Githubs new... codex tool? To review the final part of this project I conceded to in light of a submission deadline. I don't think I could ever see a tool like that used in a day to day worflow. Using claude code for work my opinion of the codex tool is that it's like going back to a wired headphone jack for music in 2026. No thanks. 
 
 ## Cross-platform
 
-I started on Linux, finished and tested on Windows, then verified both again. Sticking to standard C++ libraries kept this mostly painless — but I wanted to be sure since a big part of the exercise was discovering what I didn't know about C++.
+I started on Linux, finished and tested on Windows, then verified both again. Sticking to standard C++ libraries kept this mostly painless — but I wanted to be sure since a big part of the exercise was discovering what I didn't know about C++. Quite frankly my workflow depends on which system I'm using that day: Either my winslop desktop machine or my linux laptop.
 
 Compiled with `g++` directly:
 
@@ -92,12 +93,8 @@ Each case has a paired `failN.json` (invalid) and `passN.json` (valid) fixture:
 12. **Array trailing comma** — §5. No comma after the last array element.
 13. **Structure completion** — §2. Every open brace/bracket must close.
 14. **Number sign** — §6. Optional `-`, no `+` prefix.
-15. **Control characters** — §7. Control chars (U+0000–U+001F) must be escaped. Unescaped newlines inside strings are now rejected by the tokenizer; the full U+0000–U+001F range still isn't checked exhaustively, but the common offender is covered.
+15. **Control characters** — §7. Control chars (U+0000–U+001F) must be escaped. Unescaped newlines inside strings are now rejected by the tokenizer; the full U+0000–U+001F range still isn't checked exhaustively, but the common offender is covered. I ran out of time for the project deadline before I could implement the full range check. 
 
-### Test loop
+## Conclusion
 
-1. Generate `failN.json` files with one specific defect each.
-2. Generate matching `passN.json` files that are valid.
-3. Run the parser, verify it accepts the pass set and rejects the fail set.
-4. Iterate until clean.
-5. Run `testFinal.json` — a single large valid file — to exercise the formatter end-to-end.
+This project was probably one of the most rewarding coding exercises I've done. I learned a TON about C++ and the subsequent class I couldn't wait to snag a seat in. The JSON parser was a fun challenge and I got to apply a lot of the concepts we learned and in the next term I got to use it as a really nice starting point for a more complex project: A polyglot discord bot that would accept input from an express application and return valid JSON. If I recall correctly my reasoning was "why drive your car to work when you could fly a jet?" and it was pretty fun to build. However in reality that one turned out to be a little less ambitious as it became a just a calculator for the game Rust with only a few features. 
