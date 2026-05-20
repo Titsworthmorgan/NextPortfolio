@@ -1,4 +1,4 @@
-import { InlineCode } from "@/once-ui/components";
+import { InlineCode, SmartLink } from "@/once-ui/components";
 
 const person = {
   firstName: "Morgan",
@@ -268,8 +268,12 @@ const about = {
     title: "Studies",
     institutions: [
       {
+        name: "Oregon State University",
+        description: <>Currently pursuing a Bachelor's in Electrical Engineering.</>,
+      },
+      {
         name: "Lane Community College",
-        description: <>Currently enrolled for computer science</>,
+        description: <>Completed pre-engineering coursework before transferring to Oregon State.</>,
       },
     ],
   },
@@ -344,6 +348,21 @@ const about = {
       {
         title: "TypeScript",
         description: <>Developing scalable applications with TypeScript</>,
+        images: [],
+      },
+      {
+        title: "C",
+        description: <>Low-level systems programming in C.</>,
+        images: [],
+      },
+      {
+        title: "C++",
+        description: (
+          <>
+            Hand-rolled tokenizer/parser work in C++ — see the{" "}
+            <SmartLink href="/blog/json-parser">JSON parser write-up</SmartLink>.
+          </>
+        ),
         images: [],
       },
     ],

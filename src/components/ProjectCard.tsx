@@ -62,28 +62,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <Flex fillWidth gap="m" direction="column">
-      <Flex onClick={handleImageClick}>
-        <RevealFx
-          style={{ width: "100%" }}
-          delay={0.4}
-          trigger={isTransitioning}
-          speed="fast"
-        >
-          <SmartImage
-            tabIndex={0}
-            radius="l"
-            alt={title}
-            aspectRatio="16 / 9"
-            src={images[activeIndex]}
-            style={{
-              border: "1px solid var(--neutral-alpha-weak)",
-              ...(images.length > 1 && {
-                cursor: "pointer",
-              }),
-            }}
-          />
-        </RevealFx>
-      </Flex>
+      {images.length > 0 && (
+        <Flex onClick={handleImageClick}>
+          <RevealFx
+            style={{ width: "100%" }}
+            delay={0.4}
+            trigger={isTransitioning}
+            speed="fast"
+          >
+            <SmartImage
+              tabIndex={0}
+              radius="l"
+              alt={title}
+              aspectRatio="16 / 9"
+              src={images[activeIndex]}
+              style={{
+                border: "1px solid var(--neutral-alpha-weak)",
+                ...(images.length > 1 && {
+                  cursor: "pointer",
+                }),
+              }}
+            />
+          </RevealFx>
+        </Flex>
+      )}
       {images.length > 1 && (
         <Flex
           gap="4"

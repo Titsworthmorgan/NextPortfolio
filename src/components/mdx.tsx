@@ -1,8 +1,12 @@
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import React, { ReactNode } from 'react';
+import fs from 'node:fs';
+import path from 'node:path';
+import rehypePrettyCode, { type Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 
-import { SmartImage, SmartLink, Text } from '@/once-ui/components';
+import { InlineCode, SmartImage, SmartLink, Text } from '@/once-ui/components';
 import { HeadingLink } from '@/components';
+import { CodeBlock } from '@/components/CodeBlock';
 
 import { TextProps } from '@/once-ui/interfaces';
 import { SmartImageProps } from '@/once-ui/components/SmartImage';
@@ -121,6 +125,19 @@ function createParagraph({ children }: TextProps) {
     );
 };
 
+type MDXCodeProps = React.HTMLAttributes<HTMLElement> & {
+    'data-language'?: string;
+};
+
+function MDXCode({ children, ...props }: MDXCodeProps) {
+    // rehype-pretty-code only sets data-language on block tokens.
+    // Inline backtick code has no language attribute — render as the once-ui pill.
+    if (props['data-language']) {
+        return <code {...props}>{children}</code>;
+    }
+    return <InlineCode>{children}</InlineCode>;
+}
+
 const components = {
     p: createParagraph as any,
     h1: createHeading(1) as any,
@@ -131,18 +148,86 @@ const components = {
     h6: createHeading(6) as any,
     img: createImage as any,
     a: CustomLink as any,
+    code: MDXCode as any,
+    pre: CodeBlock as any,
     Table,
 };
+
+const rehypePrettyCodeOptions: Partial<RehypePrettyCodeOptions> = {
+    theme: { light: 'github-light', dark: 'github-dark' },
+    keepBackground: false,
+    defaultLang: 'plaintext',
+};
+
+// Map file extension to a Shiki language id.
+const langByExt: Record<string, string> = {
+    cpp: 'cpp', cc: 'cpp', cxx: 'cpp', hpp: 'cpp', h: 'cpp', hh: 'cpp', hxx: 'cpp',
+    ts: 'ts', tsx: 'tsx', js: 'js', jsx: 'jsx',
+    py: 'python', rs: 'rust', go: 'go', sh: 'bash', bash: 'bash',
+    json: 'json', yml: 'yaml', yaml: 'yaml', toml: 'toml',
+    md: 'markdown', mdx: 'mdx', css: 'css', scss: 'scss', html: 'html',
+};
+
+// Read a single attribute out of a JSX-style tag.
+function attr(raw: string, name: string): string | undefined {
+    const m = raw.match(new RegExp(`\\b${name}\\s*=\\s*"([^"]*)"`));
+    return m?.[1];
+}
+function boolAttr(raw: string, name: string): boolean {
+    return new RegExp(`\\b${name}\\b(?!\\s*=)`).test(raw);
+}
+
+// Expand `<Source file="..." title="..." lang="..." highlight="..." showLineNumbers />`
+// JSX tags in the MDX source by reading the referenced file and substituting a
+// fenced code block. rehype-pretty-code then handles syntax highlighting.
+function expandSourceDirectives(source: string): string {
+    return source.replace(/<Source\b([\s\S]*?)\/>/g, (_, attrs: string) => {
+        const file = attr(attrs, 'file');
+        if (!file) return '';
+        const abs = path.join(process.cwd(), file);
+        let content: string;
+        try {
+            content = fs.readFileSync(abs, 'utf8');
+        } catch {
+            return `\n\`\`\`\nSource file not found: ${file}\n\`\`\`\n`;
+        }
+        const ext = file.split('.').pop()?.toLowerCase() ?? '';
+        const lang = attr(attrs, 'lang') ?? langByExt[ext] ?? 'plaintext';
+        const title = attr(attrs, 'title') ?? file.split('/').pop();
+        const highlight = attr(attrs, 'highlight');
+        const showLineNumbers = boolAttr(attrs, 'showLineNumbers');
+        const meta = [
+            title ? `title="${title}"` : '',
+            showLineNumbers ? 'showLineNumbers' : '',
+            highlight ? `{${highlight}}` : '',
+        ].filter(Boolean).join(' ');
+        return `\n\`\`\`${lang}${meta ? ' ' + meta : ''}\n${content.replace(/\n$/, '')}\n\`\`\`\n`;
+    });
+}
 
 type CustomMDXProps = MDXRemoteProps & {
     components?: typeof components;
 };
 
 export function CustomMDX(props: CustomMDXProps) {
+    const expandedSource = typeof props.source === 'string'
+        ? expandSourceDirectives(props.source)
+        : props.source;
     return (
         <MDXRemote
             {...props}
+            source={expandedSource}
             components={{ ...components, ...(props.components || {}) }}
+            options={{
+                ...(props.options || {}),
+                mdxOptions: {
+                    ...(props.options?.mdxOptions || {}),
+                    rehypePlugins: [
+                        ...((props.options?.mdxOptions?.rehypePlugins as any) || []),
+                        [rehypePrettyCode, rehypePrettyCodeOptions],
+                    ],
+                },
+            }}
         />
     );
 }

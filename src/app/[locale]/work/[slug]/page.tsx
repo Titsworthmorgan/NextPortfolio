@@ -133,7 +133,7 @@ export default async function Project({ params }: WorkParams) {
 					{post.metadata.title}
 				</Heading>
 			</Flex>
-			{post.metadata.images.length > 0 && (
+			{post.metadata.images?.length > 0 && (
 				<SmartImage
 					aspectRatio="16 / 9"
 					radius="m"

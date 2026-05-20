@@ -1,0 +1,103 @@
+---
+title: "C++ JSON Parser"
+publishedAt: "2026-05-19"
+summary: "A from-scratch JSON parser and formatter written in C++. The final project for a C++ class — started as a wc clone but the JSON formatter is where it got interesting."
+images: []
+team:
+  - name: "Morgan Titsworth"
+    role: "Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/morgan-titsworth/"
+---
+
+## Overview
+
+This started as a [wc](https://codingchallenges.fyi/challenges/challenge-wc) clone but the more interesting half of the project is the JSON parser/formatter. The parser is hand-rolled in two passes:
+
+1. **Lexical analysis** — read the raw text and emit a token stream like `` [`{`, `"someKey"`, `:`, `"someValue"`, `}`] ``.
+2. **Parsing + formatting** — validate that token stream against RFC 8259 and ECMA-404, then emit a re-formatted version to a sibling `*-formatted.json` file.
+
+I followed the [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c2-use-class-if-the-class-has-an-invariant-use-struct-if-the-data-members-can-vary-independently) for the class-vs-struct split and the general rule of declaring classes in headers and defining them in cpp files. The formatter isn't quite up to `prettier`/`jq` polish, but it produces consistent, human-readable output.
+
+A few honest caveats:
+
+- Some error messages aren't perfectly precise — e.g. `Expected , or '}'` shows up when the real problem is an unclosed string. Points you in the right direction even if it's not pinpoint.
+- Certain checks live in the tokenizer instead of the parser (leading zeros, multi-decimal numbers, unterminated strings) because they're easier to catch during tokenization.
+
+## Cross-platform
+
+I started on Linux, finished and tested on Windows, then verified both again. Sticking to standard C++ libraries kept this mostly painless — but I wanted to be sure since a big part of the exercise was discovering what I didn't know about C++.
+
+Compiled with `g++` directly:
+
+```bash title="build.sh"
+rm -rf ./output/*
+mkdir -p ./output
+g++ -Werror ./src/main.cpp ./src/cmdL.cpp ./src/jsonFormatting.cpp -o ./output/t.exe
+if [ $? -ne 0 ]; then
+    echo "Build failed."
+    exit 1
+fi
+echo "Build succeeded."
+```
+
+`-Werror` treats warnings as errors — closest thing C++ has to a linter and it caught a lot during early iteration.
+
+## Usage
+
+```bash title="test.sh usage"
+# Format a JSON file
+./test.sh -j input.json output-formatted.json
+
+# Run the JSON test suite (pass*/fail* pairs)
+./test.sh -t
+```
+
+The `-j` flag is the JSON formatter; `-t` runs the test harness against the pass/fail fixtures described below.
+
+## Source
+
+The entry point dispatches on the flag and hands the file streams to either `parseAndWriteJsonFiles` (for `-j`) or `testJsonParsing` (for `-t`):
+
+<Source file="content/json-parser/main.cpp" title="main.cpp" showLineNumbers />
+
+The header lays out the two classes — `Tokenizer` for lexical analysis, `Parser` for validation and structural checks — plus the free functions that glue them together:
+
+<Source file="content/json-parser/jsonFormatting.hpp" title="jsonFormatting.hpp" showLineNumbers />
+
+And the implementation — tokenization, the parse loop, duplicate-key validation, and the formatter that writes the pretty-printed output:
+
+<Source file="content/json-parser/jsonFormatting.cpp" title="jsonFormatting.cpp" showLineNumbers />
+
+## JSON test cases
+
+Standards I'm working against:
+
+- [RFC 8259](https://www.rfc-editor.org/rfc/pdfrfc/rfc8259.txt.pdf) — The JavaScript Object Notation (JSON) Data Interchange Format
+- [ECMA-404](https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf) — The JSON Data Interchange Standard
+
+Each case has a paired `failN.json` (invalid) and `passN.json` (valid) fixture:
+
+1. **Trailing commas** — RFC 8259 §5–6. No trailing comma after the last element in arrays or objects.
+2. **String delimiters** — §7. Strings must use double quotes (U+0022) only.
+3. **Object key quoting** — §4. Object member names must be quoted strings.
+4. **Comments** — JSON grammar has no comments (no `//` or `/* */`).
+5. **Primitive values** — §3. Only `true`, `false`, `null` as literals — no `undefined`, `NaN`, `Infinity`.
+6. **Nesting depth** — §9. Parsers may impose a depth limit to avoid stack overflow.
+7. **Escape sequences** — §7. Only `\"`, `\\`, `\/`, `\b`, `\f`, `\n`, `\r`, `\t`, `\uXXXX`. (Newline escape is the one I never got perfect.)
+8. **Number formatting** — §6. No leading zeros (except `0.x`), no hex/octal.
+9. **String termination** — §7. Every string must close with a quote.
+10. **Bracket matching** — §5–6. `[` pairs with `]`, `{` pairs with `}`.
+11. **Duplicate keys** — §4. Duplicate object names are discouraged.
+12. **Array trailing comma** — §5. No comma after the last array element.
+13. **Structure completion** — §2. Every open brace/bracket must close.
+14. **Number sign** — §6. Optional `-`, no `+` prefix.
+15. **Control characters** — §7. Control chars (U+0000–U+001F) must be escaped. Unescaped newlines inside strings are now rejected by the tokenizer; the full U+0000–U+001F range still isn't checked exhaustively, but the common offender is covered.
+
+### Test loop
+
+1. Generate `failN.json` files with one specific defect each.
+2. Generate matching `passN.json` files that are valid.
+3. Run the parser, verify it accepts the pass set and rejects the fail set.
+4. Iterate until clean.
+5. Run `testFinal.json` — a single large valid file — to exercise the formatter end-to-end.
