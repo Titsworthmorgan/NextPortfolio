@@ -2,12 +2,11 @@ import { Avatar, Button, Flex, Heading, Icon, IconButton, SmartImage, Tag, Text 
 import { baseURL, renderContent } from '@/app/resources';
 import TableOfContents from '@/components/about/TableOfContents';
 import styles from '@/components/about/about.module.scss'
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
-
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 export async function generateMetadata(
-    {params: {locale}}: { params: { locale: string }}
+    {params}: { params: Promise<{ locale: string }>}
 ) {
+    const { locale } = await params;
     const t = await getTranslations();
     const {person, about, social } = renderContent(t);
 	const title = about.title;
@@ -21,7 +20,7 @@ export async function generateMetadata(
 			title,
 			description,
 			type: 'website',
-			url: `https://${baseURL}/${locale}/blog`,
+			url: `https://${baseURL}/${locale}/about`,
 			images: [
 				{
 					url: ogImage,
@@ -38,11 +37,12 @@ export async function generateMetadata(
 	};
 }
 
-export default function About(
-    { params: {locale}}: { params: { locale: string }}
+export default async function About(
+    { params }: { params: Promise<{ locale: string }>}
 ) {
-    unstable_setRequestLocale(locale);
-    const t = useTranslations();
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations();
     const {person, about, social } = renderContent(t);
     const structure = [
         { 
@@ -79,9 +79,9 @@ export default function About(
                         '@type': 'Person',
                         name: person.name,
                         jobTitle: person.role,
-                        description: about.intro.description,
+                        description: about.description,
                         url: `https://${baseURL}/about`,
-                        image: `${baseURL}/images/${person.avatar}`,
+                        image: `${baseURL}${person.avatar}`,
                         sameAs: social
                             .filter((item) => item.link && !item.link.startsWith('mailto:')) // Filter out empty links and email links
                             .map((item) => item.link),

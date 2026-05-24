@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import { mailchimp } from '@/app/resources'
 import { Button, Flex, Heading, Input, Text } from '@/once-ui/components';
 import { Background } from '@/once-ui/components/Background';
@@ -17,8 +18,8 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
 
 type NewsletterProps = {
     display: boolean;
-    title: string | JSX.Element;
-    description: string | JSX.Element;
+    title: string | React.JSX.Element;
+    description: string | React.JSX.Element;
 }
 
 export const Mailchimp = (

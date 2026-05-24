@@ -11,16 +11,16 @@ import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { renderContent } from "@/app/resources";
 import { Analytics } from "@vercel/analytics/react"
 export async function generateMetadata(
-	{ params: { locale }}: { params: { locale: string }}
+	{ params }: { params: Promise<{ locale: string }> }
 ) {
-
+	const { locale } = await params;
 	const t = await getTranslations();
 	const { person, home } = renderContent(t);
 
@@ -77,7 +77,7 @@ const code = Source_Code_Pro({
 
 interface RootLayoutProps {
 	children: React.ReactNode;
-	params: {locale: string};
+	params: Promise<{locale: string}>;
 }
 
 export function generateStaticParams() {
@@ -86,9 +86,10 @@ export function generateStaticParams() {
 
 export default async function RootLayout({
 	children,
-	params: {locale}
+	params
 } : RootLayoutProps) {
-	unstable_setRequestLocale(locale);
+	const {locale} = await params;
+	setRequestLocale(locale);
 	const messages = await getMessages();
 	return (
 		<NextIntlClientProvider messages={messages}>

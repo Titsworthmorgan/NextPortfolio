@@ -1,4 +1,4 @@
-import { InlineCode } from "@/once-ui/components";
+import { InlineCode, SmartLink } from "@/once-ui/components";
 
 const person = {
   firstName: "Morgan",
@@ -56,17 +56,20 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Full Stack Developer and Military Veteran with Secret Security
-        Clearance, specializing in a wide range of web technologies, including
-        HTML, CSS, JavaScript, React, SQL, and NoSQL. Brings 4 years of
-        experience leading technical teams and managing software implementation,
-        along with a strong foundation in competency-based learning to guide
-        junior developers in practical project execution. Proven ability to
-        streamline workflows and optimize development processes, crafting web
-        and mobile applications for diverse clients. Passionate about embracing
-        new technologies and maintaining industry-relevant educational content.
-        Recognized for leadership, technical proficiency, and commitment to
-        delivering high-quality software solutions.
+        Full Stack Developer and Military Veteran, specializing in a wide
+        range of web technologies, including HTML, CSS, JavaScript, SQL, NoSQL,
+        and most modern frontend frameworks such as React, Vue, Angular, and
+        Next.js. Brings 5 years of experience designing, building, and
+        shipping production software, along with a strong foundation in
+        competency-based learning to guide junior developers in practical
+        project execution. Currently pursuing a BA in Electrical Engineering,
+        with a recent focus on low-level programming in C and C++. Proven
+        ability to streamline workflows and optimize development processes,
+        crafting web and mobile applications for diverse clients. Passionate
+        about embracing new technologies — from high-level web stacks down to
+        systems-level code — and maintaining industry-relevant educational
+        content. Recognized for leadership, technical proficiency, and
+        commitment to delivering high-quality software solutions.
       </>
     ),
   },
@@ -268,8 +271,12 @@ const about = {
     title: "Studies",
     institutions: [
       {
+        name: "Oregon State University",
+        description: <>Currently pursuing a Bachelor's in Electrical Engineering.</>,
+      },
+      {
         name: "Lane Community College",
-        description: <>Currently enrolled for computer science</>,
+        description: <>Completed pre-engineering coursework before transferring to Oregon State.</>,
       },
     ],
   },
@@ -346,6 +353,21 @@ const about = {
         description: <>Developing scalable applications with TypeScript</>,
         images: [],
       },
+      {
+        title: "C",
+        description: <>Low-level systems programming in C.</>,
+        images: [],
+      },
+      {
+        title: "C++",
+        description: (
+          <>
+            Hand-rolled tokenizer/parser work in C++ — see the{" "}
+            <SmartLink href="/blog/json-parser">JSON parser write-up</SmartLink>.
+          </>
+        ),
+        images: [],
+      },
     ],
   },
 };
@@ -385,6 +407,11 @@ const gallery = {
     {
       src: "/images/gallery/img-08.jpg",
       alt: "image",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/DSC01916.JPG",
+      alt: "Won a hackathon for game dev",
       orientation: "horizontal",
     },
   ],

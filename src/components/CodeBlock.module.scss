@@ -1,0 +1,103 @@
+// Outer figure produced by rehype-pretty-code. Use :global so the selector
+// matches the data-attributes that rehype injects on the server-rendered HTML.
+:global(figure[data-rehype-pretty-code-figure]) {
+    margin: var(--static-space-20) 0;
+    border: 1px solid var(--neutral-alpha-medium);
+    border-radius: var(--radius-m);
+    background: var(--neutral-alpha-weak);
+    overflow: hidden;
+}
+
+:global(figure[data-rehype-pretty-code-figure] figcaption[data-rehype-pretty-code-title]) {
+    padding: var(--static-space-8) var(--static-space-16);
+    font-family: var(--font-family-code);
+    font-size: 0.8125rem;
+    color: var(--neutral-on-background-medium);
+    background: var(--neutral-alpha-weak);
+    border-bottom: 1px solid var(--neutral-alpha-medium);
+}
+
+// Wrapper around <pre> so we can position the copy button.
+.wrapper {
+    position: relative;
+}
+
+.wrapper:hover .copy,
+.copy:focus-visible {
+    opacity: 1;
+}
+
+.copy {
+    position: absolute;
+    top: var(--static-space-8);
+    right: var(--static-space-8);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.wrapper :global(pre) {
+    margin: 0;
+    padding: var(--static-space-16);
+    overflow-x: auto;
+    font-family: var(--font-family-code);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.wrapper :global(pre code) {
+    display: block;
+    background: transparent;
+    color: var(--shiki-light);
+    counter-reset: line;
+}
+
+.wrapper :global(pre code [data-line]) {
+    display: inline-block;
+    width: 100%;
+    padding: 0 var(--static-space-4);
+    border-left: 2px solid transparent;
+}
+
+.wrapper :global(pre code span) {
+    color: var(--shiki-light);
+}
+
+// Highlighted lines (e.g. ```cpp {1,3-5})
+.wrapper :global(pre code [data-highlighted-line]) {
+    background: var(--neutral-alpha-medium);
+    border-left-color: var(--brand-on-background-strong, var(--neutral-on-background-strong));
+}
+
+// Highlighted character ranges (e.g. ```cpp /needle/)
+.wrapper :global(pre code [data-highlighted-chars]) {
+    background: var(--neutral-alpha-medium);
+    border-radius: var(--radius-s);
+    padding: 0 var(--static-space-2);
+}
+
+// Line numbers — opt-in via `showLineNumbers` meta on the fence.
+.wrapper :global(pre code[data-line-numbers]) {
+    counter-reset: line;
+}
+
+.wrapper :global(pre code[data-line-numbers] > [data-line])::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 2rem;
+    margin-right: var(--static-space-16);
+    text-align: right;
+    color: var(--neutral-on-background-weak);
+}
+
+// Dark-mode swap. once-ui sets [data-theme="dark"] high in the tree.
+:global([data-theme='dark']) .wrapper :global(pre code),
+:global([data-theme='dark']) .wrapper :global(pre code span) {
+    color: var(--shiki-dark);
+}
+
+:global([data-theme='dark']) .wrapper :global(pre code [data-highlighted-line]),
+:global([data-theme='dark']) .wrapper :global(pre code [data-highlighted-chars]) {
+    background: var(--neutral-alpha-strong, var(--neutral-alpha-medium));
+}
